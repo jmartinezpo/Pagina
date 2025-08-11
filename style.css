@@ -1,0 +1,106 @@
+:root{
+  --bg1:#0f172a; --bg2:#1e293b;
+  --text:#e5e7eb; --muted:#94a3b8;
+  --btn:#f1f5f9; --btn-text:#0f172a;
+}
+
+*{ box-sizing:border-box; }
+html,body{
+  height:100%; margin:0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(1200px 800px at 10% 10%, #1b2844, transparent 60%),
+    radial-gradient(1000px 700px at 90% 20%, #1a2340, transparent 55%),
+    linear-gradient(160deg, var(--bg1), var(--bg2));
+}
+
+.container{
+  max-width:1100px; margin:0 auto; padding:24px;
+  min-height:100%; display:grid; place-items:center;
+}
+
+.view{ display:none; text-align:center; }
+.view.active{ display:block; animation:fadeIn .35s ease-out; }
+
+/* Tipografía responsiva */
+h1{ font-size:clamp(34px, 6vw, 72px); letter-spacing:.2px; margin:.2rem 0 .5rem; }
+h2{ font-size:clamp(22px, 3.6vw, 36px); margin:.2rem 0 .5rem; }
+.subtitle{ color:var(--muted); font-size:clamp(14px, 2.4vw, 18px); }
+.hint{ color:var(--muted); font-size:clamp(14px, 2.2vw, 18px); margin-bottom:1rem; }
+
+.btn{
+  border:none; padding:.9rem 1.2rem; border-radius:999px;
+  background:var(--btn); color:var(--btn-text); font-weight:700;
+  font-size:clamp(14px, 2.2vw, 16px);
+  box-shadow:0 6px 14px rgba(0,0,0,.25);
+  transition:transform .08s ease, box-shadow .2s ease;
+}
+.btn:active{ transform:scale(.98); }
+.btn.primary{ background:linear-gradient(180deg, #fff, #e2e8f0); }
+
+.playground{
+  position:relative;
+  width:min(100%, 900px);
+  height:min(78vh, 640px);
+  min-height:420px;
+  margin:18px auto;
+  border-radius:24px;
+  background:rgba(255,255,255,.04);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.06);
+  overflow:hidden;
+}
+
+/* Mariposa SVG */
+.butterfly{
+  position:absolute; left:50%; top:50%;
+  transform:translate(-50%,-50%);
+  width:160px; height:130px;
+  animation: float 2s ease-in-out infinite alternate;
+}
+.wing{
+  transform-origin:center;
+  animation: flap 1.2s ease-in-out infinite alternate;
+}
+.wing.left { transform-origin: 100px 80px; }
+.wing.right{ transform-origin: 100px 80px; }
+
+/* Animaciones */
+@keyframes flap {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(8deg); }
+}
+@keyframes float {
+  from { transform: translate(-50%,-50%) translateY(-3px); }
+  to   { transform: translate(-50%,-50%) translateY(3px); }
+}
+
+/* Progreso */
+.progress{
+  position:absolute; right:10px; bottom:8px;
+  font-size:.9rem; color:var(--muted);
+  padding:4px 8px; background:rgba(0,0,0,.25); border-radius:8px;
+}
+
+/* Lista de lugares */
+.places{
+  list-style:none; padding:0; margin:1rem auto 0;
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+  gap:12px; width:min(100%, 760px);
+}
+.places li a{
+  display:block; padding:14px 16px; border-radius:16px;
+  background:rgba(255,255,255,.06); color:var(--text); text-decoration:none;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.10);
+  transition:transform .08s ease, background .2s ease;
+}
+.places li a:hover{ transform:translateY(-2px); background:rgba(255,255,255,.10); }
+
+.actions{ margin-top:14px; }
+.mini-help{ color:var(--muted); }
+
+/* Otros */
+@keyframes fadeIn{
+  from{ opacity:0; transform: translateY(6px); }
+  to{ opacity:1; transform: translateY(0); }
+}

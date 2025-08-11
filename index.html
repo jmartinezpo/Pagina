@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Invitación — Segundo Mes | Julián & Luisa</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="container">
+    <!-- Pantalla de presentación -->
+    <section id="intro" class="view active" aria-labelledby="intro-title">
+      <h1 id="intro-title">Invitación — Segundo Mes 💛</h1>
+      <p class="subtitle">Julián &amp; Luisa</p>
+      <p class="hint">Toca el botón para comenzar un mini-juego.</p>
+      <button id="startBtn" class="btn primary">Comenzar</button>
+    </section>
+
+    <!-- Juego -->
+    <section id="game" class="view" aria-labelledby="game-title">
+      <h2 id="game-title" class="sr-only">Juego: persigue las mariposas</h2>
+      <div id="playground" class="playground" aria-live="polite">
+        <!-- Mariposa inline (svg) -->
+        <svg id="circle" class="butterfly" viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg" aria-label="Toca la mariposa">
+          <g class="wing left">
+            <path fill="url(#grad)" d="M100,80c-10,-30 -40,-55 -70,-55c-15,0 -25,10 -25,22c0,25 35,28 63,33c-28,7 -63,10 -63,35c0,12 10,20 25,20c30,0 60,-25 70,-55z"/>
+          </g>
+          <g class="wing right">
+            <path fill="url(#grad)" d="M100,80c10,-30 40,-55 70,-55c15,0 25,10 25,22c0,25 -35,28 -63,33c28,7 63,10 63,35c0,12 -10,20 -25,20c-30,0 -60,-25 -70,-55z"/>
+          </g>
+          <rect class="body" x="95" y="65" width="10" height="30" rx="5" fill="#f7c948"/>
+          <defs>
+            <linearGradient id="grad" x1="0" x2="1">
+              <stop offset="0%" stop-color="#fff39a"/>
+              <stop offset="100%" stop-color="#ffd84d"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <div class="progress"><span id="progressText"></span></div>
+      </div>
+      <p class="mini-help">Persigue las mariposas hasta que te lleven al camino final ✨</p>
+    </section>
+
+    <!-- Pantalla final -->
+    <section id="final" class="view" aria-labelledby="final-title">
+      <h2 id="final-title">¡Ganaste! 🎉</h2>
+      <p class="subtitle">Ahora sí… nuestra cena de mesversario 💫</p>
+      <p>¿Qué te gustaría?</p>
+      <ul class="places" id="places"></ul>
+      <div class="actions">
+        <button id="restartBtn" class="btn">Volver a jugar</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
