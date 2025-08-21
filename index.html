@@ -3,22 +3,59 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Invitación — Segundo Mes | Julián & Luisa</title>
+  <title>Invitación — Julián & Luisa</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <main class="container">
-    <!-- Pantalla de presentación -->
-    <section id="intro" class="view active" aria-labelledby="intro-title">
-      <h1 id="intro-title">Invitación — Segundo Mes 💛</h1>
-      <p class="subtitle">Julián &amp; Luisa</p>
-      <p class="hint">Toca el botón para comenzar un mini-juego.</p>
-      <button id="startBtn" class="btn primary">Comenzar</button>
+
+    <!-- Portada -->
+    <section id="portada" class="view active" aria-labelledby="portada-title">
+      <h1 id="portada-title">¿Lista para esta increíble invitación? 💛</h1>
+      <button id="toHistoriaBtn" class="btn primary">Comenzar</button>
+    </section>
+
+    <!-- Historia con canción -->
+    <section id="historia" class="view" aria-labelledby="historia-title">
+      <h2 id="historia-title">Nuestra historia</h2>
+      <p class="subtitle">
+        Hace 2 meses estamos juntos<br/>
+        y cada momento a tu lado es lo mejor que tengo ✨
+      </p>
+      <div class="media">
+        <!-- Video YouTube -->
+        <iframe
+          width="560" height="315"
+          src="https://www.youtube.com/embed/DurttJ_IDaQ"
+          title="YouTube video player" frameborder="0"
+          allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <button id="toGaleriaBtn" class="btn">Nosotros</button>
+    </section>
+
+    <!-- Galería de fotos -->
+    <section id="galeria" class="view" aria-labelledby="galeria-title">
+      <h2 id="galeria-title">Nuestros momentos juntos 💛</h2>
+      <div class="gallery" id="gallery"></div>
+      <button id="toPuenteBtn" class="btn">Siguiente</button>
+    </section>
+
+    <!-- Puente al juego -->
+    <section id="puente" class="view" aria-labelledby="puente-title">
+      <h2 id="puente-title">Una invitación especial</h2>
+      <p>
+        Quiero compartir contigo todo; por eso te hago una invitación a una cena juntos.
+        Para poder verla, necesitas superar este mini-juego 🌟
+      </p>
+      <button id="toJuegoBtn" class="btn primary">Jugar</button>
     </section>
 
     <!-- Juego -->
     <section id="game" class="view" aria-labelledby="game-title">
-      <h2 id="game-title" class="sr-only">Juego: persigue las mariposas</h2>
+      <h2 id="game-title">Juego: persigue la mariposa 🦋</h2>
       <div id="playground" class="playground" aria-live="polite">
         <!-- Mariposa inline (svg) -->
         <svg id="circle" class="butterfly" viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg" aria-label="Toca la mariposa">
@@ -38,21 +75,25 @@
         </svg>
         <div class="progress"><span id="progressText"></span></div>
       </div>
-      <p class="mini-help">Persigue las mariposas hasta que te lleven al camino final ✨</p>
+      <p class="mini-help">Persigue la mariposa hasta descubrir la invitación ✨</p>
     </section>
 
     <!-- Pantalla final -->
     <section id="final" class="view" aria-labelledby="final-title">
       <h2 id="final-title">¡Ganaste! 🎉</h2>
       <p class="subtitle">Ahora sí… nuestra cena de mesversario 💫</p>
-      <p>¿Qué te gustaría?</p>
       <ul class="places" id="places"></ul>
+      <p class="final-msg">
+        Ya tenemos una tradición juntos, por eso vamos a un restaurante que me recuerda
+        al viaje que hice antes de encontrar el mejor tesoro: tú.
+      </p>
       <div class="actions">
         <button id="restartBtn" class="btn">Volver a jugar</button>
       </div>
     </section>
-  </main>
 
+  </main>
   <script src="script.js" defer></script>
 </body>
 </html>
+
