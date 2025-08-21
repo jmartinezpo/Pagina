@@ -4,24 +4,41 @@ const ASPECT = 0.8125; // alto/ancho
 const MIN_WIDTH = 36;
 const SHRINK_BY = 0.85;
 
+// Restaurante único
 const PLACES = [
-  { name: "El Chato",     url: "https://maps.google.com/?q=El+Chato" },
-  { name: "Prudencia",    url: "https://maps.google.com/?q=Prudencia" },
-  { name: "Andrés D.C.",  url: "https://maps.google.com/?q=Andres+DC" },
-  { name: "DeRaíz",       url: "https://maps.google.com/?q=DeRaiz" }
+  {
+    name: "Quinto Cocina",
+    url: "https://www.google.com/maps/place/quinto+cocina/data=!4m2!3m1!1s0x8e3f9b87e6c574fd:0x8c3f83fb10e8916e?sa=X&ved=1t:242&ictx=111"
+  }
 ];
 
+// Fotos
+const PHOTOS = [
+  "Foto 1.jpg","Foto 2.jpg","Foto 3.jpg","Foto 4.jpg","Foto 5.jpg",
+  "Foto 6.jpg","Foto 7.jpg","Foto 8.jpg","Foto 9.jpg","Foto 10.jpg"
+];
+
+// ===== Vistas y elementos =====
 const views = {
-  intro: document.getElementById("intro"),
-  game:  document.getElementById("game"),
-  final: document.getElementById("final"),
+  portada:  document.getElementById("portada"),
+  historia: document.getElementById("historia"),
+  galeria:  document.getElementById("galeria"),
+  puente:   document.getElementById("puente"),
+  game:     document.getElementById("game"),
+  final:    document.getElementById("final"),
 };
-const startBtn   = document.getElementById("startBtn");
-const restartBtn = document.getElementById("restartBtn");
+
+const toHistoriaBtn = document.getElementById("toHistoriaBtn");
+const toGaleriaBtn  = document.getElementById("toGaleriaBtn");
+const toPuenteBtn   = document.getElementById("toPuenteBtn");
+const toJuegoBtn    = document.getElementById("toJuegoBtn");
+const restartBtn    = document.getElementById("restartBtn");
+
 const butterfly  = document.getElementById("circle");
 const playground = document.getElementById("playground");
 const progressEl = document.getElementById("progressText");
 const placesEl   = document.getElementById("places");
+const galleryEl  = document.getElementById("gallery");
 
 let widthPx = START_WIDTH;
 let heightPx = Math.round(START_WIDTH * ASPECT);
@@ -32,6 +49,7 @@ function showView(id){
   Object.values(views).forEach(v => v.classList.remove("active"));
   views[id].classList.add("active");
 }
+
 const clamp = (v,min,max) => Math.max(min, Math.min(max, v));
 
 function setEntitySize(w){
@@ -68,6 +86,17 @@ function fillPlaces(){
   });
 }
 
+function fillGallery(){
+  galleryEl.innerHTML = "";
+  PHOTOS.forEach(src => {
+    const img = document.createElement("img");
+    img.src = src;
+    img.alt = "Foto juntos";
+    img.loading = "lazy";
+    galleryEl.appendChild(img);
+  });
+}
+
 // ===== Juego =====
 function startGame(){
   clicks = 0;
@@ -101,8 +130,14 @@ function handleResize(){
   butterfly.style.top  = `${clamp(top, 0, rect.height - heightPx)}px`;
 }
 
-// ===== Eventos =====
-startBtn.addEventListener("click", startGame);
-restartBtn.addEventListener("click", () => showView("intro"));
+// ===== Navegación =====
+toHistoriaBtn.addEventListener("click", () => showView("historia"));
+toGaleriaBtn.addEventListener("click", () => { fillGallery(); showView("galeria"); });
+toPuenteBtn.addEventListener("click", () => showView("puente"));
+toJuegoBtn.addEventListener("click", startGame);
+restartBtn.addEventListener("click", () => showView("portada"));
+
+// ===== Juego eventos =====
 butterfly.addEventListener("click", handleClick);
 window.addEventListener("resize", handleResize);
+
